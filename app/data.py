@@ -5,12 +5,20 @@ from dotenv import load_dotenv
 from MonsterLab import Monster
 from pandas import DataFrame
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 
 
 class Database:
+    client = MongoClient(getenv('DB_URL'), server_api=ServerApi('1'))
 
     def seed(self, amount):
-        pass
+        try: 
+            self.client.admin.command('ping')
+            print('Success!')
+
+        except Exception as e:  
+            print(e)
+        
 
     def reset(self):
         pass

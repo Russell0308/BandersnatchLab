@@ -1,8 +1,8 @@
 # Build Sprint 1: Database Operations
 
 To begin work on this ticket, make sure you have finished:
-- Getting locally setup.
-- Completed the onboarding module in your course.
+- [x] Getting locally setup.
+- [x] Completed the onboarding module in your course.
 
 ## Objectives
 

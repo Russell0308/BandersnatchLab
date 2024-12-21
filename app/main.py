@@ -10,7 +10,7 @@ from app.data import Database
 from app.graph import chart
 from app.machine import Machine
 
-SPRINT = 0
+SPRINT = 1
 APP = Flask(__name__)
 
 
@@ -29,6 +29,7 @@ def data():
     if SPRINT < 1:
         return render_template("data.html")
     db = Database()
+    db.seed(10000)
     return render_template(
         "data.html",
         count=db.count(),
