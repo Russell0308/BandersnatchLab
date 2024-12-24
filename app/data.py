@@ -9,7 +9,8 @@ from pymongo.server_api import ServerApi
 
 
 class Database:
-    client = MongoClient(getenv('DB_URL'), server_api=ServerApi('1'))
+    load_dotenv()
+    client = MongoClient(getenv("DB_URL"), server_api=ServerApi("1"))
 
     def seed(self, amount):
         try: 
