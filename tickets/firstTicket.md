@@ -39,7 +39,7 @@ The `main.py` file has a global variable `SPRINT`. You should set this variable 
     - `DB_URL=mongodb+srv://<username>:<password>@<cluster>.<project_id>.mongodb.net`
 
 ### 2. Functionality
-- [ ] The seed() function correctly inserts the specified number of documents into the collection.
+- [x] The seed() function correctly inserts the specified number of documents into the collection.
 - [ ] The reset() function correctly deletes all documents from the collection.
 - [ ] The count() function correctly returns the number of documents in the collection.
 - [ ] The dataframe() function correctly returns a DataFrame containing all documents in the collection.

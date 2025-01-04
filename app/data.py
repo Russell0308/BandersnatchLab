@@ -9,10 +9,11 @@ from pymongo.server_api import ServerApi
 
 
 class Database:
-    load_dotenv()
-    client = MongoClient(getenv("DB_URL"), server_api=ServerApi("1"))
 
-    def seed(self, amount):
+    def __init__(self):
+        load_dotenv()
+        self.client = MongoClient(getenv("DB_URL"), tls=True, server_api=ServerApi("1"))
+        self.db = self.client['database']
         try: 
             self.client.admin.command('ping')
             print('Success!')
@@ -21,6 +22,12 @@ class Database:
             print(e)
         
 
+    def seed(self, amount):
+        self.collection = self.db['monster_collection']
+        for i in range(amount):
+            document = Monster().to_dict()
+            self.collection.insert_one(document)
+        
     def reset(self):
         pass
 

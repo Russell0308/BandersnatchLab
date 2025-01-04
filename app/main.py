@@ -5,7 +5,6 @@ import random
 from MonsterLab import Monster
 from flask import Flask, render_template, request
 from pandas import DataFrame
-
 from app.data import Database
 from app.graph import chart
 from app.machine import Machine
@@ -29,7 +28,7 @@ def data():
     if SPRINT < 1:
         return render_template("data.html")
     db = Database()
-    db.seed(10000)
+    db.seed(1000)
     return render_template(
         "data.html",
         count=db.count(),
