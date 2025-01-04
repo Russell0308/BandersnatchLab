@@ -14,6 +14,7 @@ class Database:
         load_dotenv()
         self.client = MongoClient(getenv("DB_URL"), tls=True, server_api=ServerApi("1"))
         self.db = self.client['database']
+        self.collection = self.db['monster_collection']
         try: 
             self.client.admin.command('ping')
             print('Success!')
@@ -23,16 +24,17 @@ class Database:
         
 
     def seed(self, amount):
-        self.collection = self.db['monster_collection']
         for i in range(amount):
             document = Monster().to_dict()
             self.collection.insert_one(document)
         
     def reset(self):
-        pass
+        deleted = self.collection.delete_many({})
+
+        return deleted.deleted_count
 
     def count(self) -> int:
-        pass
+        return self.collection.count()
 
     def dataframe(self) -> DataFrame:
         pass

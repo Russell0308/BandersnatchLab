@@ -29,6 +29,8 @@ def data():
         return render_template("data.html")
     db = Database()
     db.seed(1000)
+    print(db.count())
+    print(db.reset())
     return render_template(
         "data.html",
         count=db.count(),
