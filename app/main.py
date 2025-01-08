@@ -28,7 +28,8 @@ def data():
     if SPRINT < 1:
         return render_template("data.html")
     db = Database()
-    db.seed(1000)
+    if db.count() == 0:
+        db.seed(1000)
     return render_template(
         "data.html",
         count=db.count(),
