@@ -14,7 +14,6 @@ class Database:
         '''
         Initializes connection to Mongo Atlas
         Sets database and collection variable
-        Tests connection to Mongo Atlas remote server
         '''
         load_dotenv()
         self.client = MongoClient(getenv("DB_URL"), tls=True, server_api=ServerApi("1"))
@@ -30,6 +29,7 @@ class Database:
             document = Monster().to_dict()
             self.collection.insert_one(document)
         
+
     def reset(self):
         '''
         Empties the "Monsters collection"
@@ -38,11 +38,13 @@ class Database:
 
         return deleted.deleted_count
 
+
     def count(self) -> int:
         '''
         Returns the amount of documents(Monsters) in the "Monsters collection"
         '''
         return self.collection.count()
+
 
     def dataframe(self) -> DataFrame:
         '''
@@ -52,6 +54,7 @@ class Database:
         df = DataFrame(list(documents))
 
         return df
+
 
     def html_table(self) -> str:
         '''

@@ -16,7 +16,6 @@ APP = Flask(__name__)
 @APP.route("/")
 def home():
     db = Database()
-    db.reset()
     return render_template(
         "home.html",
         sprint=f"Sprint {SPRINT}",
@@ -30,7 +29,6 @@ def data():
     if SPRINT < 1:
         return render_template("data.html")
     db = Database()
-    db.seed(1000)
     return render_template(
         "data.html",
         count=db.count(),
