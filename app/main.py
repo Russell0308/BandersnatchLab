@@ -9,7 +9,7 @@ from app.data import Database
 from app.graph import chart
 from app.machine import Machine
 
-SPRINT = 1
+SPRINT = 2
 APP = Flask(__name__)
 
 
@@ -46,11 +46,11 @@ def view():
     y_axis = request.values.get("y_axis") or options[2]
     target = request.values.get("target") or options[4]
     graph = chart(
-        df=db.dataframe(),
+        df=db.dataframe().drop('_id', axis=1),
         x=x_axis,
         y=y_axis,
         target=target,
-    ).to_json()
+    ).to_html()
     return render_template(
         "view.html",
         options=options,

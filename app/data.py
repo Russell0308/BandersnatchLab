@@ -43,7 +43,7 @@ class Database:
         '''
         Returns the amount of documents(Monsters) in the "Monsters collection"
         '''
-        return self.collection.count()
+        return self.collection.count_documents({})
 
 
     def dataframe(self) -> DataFrame:
