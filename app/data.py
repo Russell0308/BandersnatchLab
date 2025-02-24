@@ -52,6 +52,7 @@ class Database:
         '''
         documents = self.collection.find()
         df = DataFrame(list(documents))
+        # df.to_csv('monsters.csv') # Save data locally
 
         return df
 

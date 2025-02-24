@@ -9,7 +9,7 @@ from app.data import Database
 from app.graph import chart
 from app.machine import Machine
 
-SPRINT = 2
+SPRINT = 3
 APP = Flask(__name__)
 
 
@@ -80,9 +80,8 @@ def model():
     health = request.values.get("health", type=float) or stats.pop()
     energy = request.values.get("energy", type=float) or stats.pop()
     sanity = request.values.get("sanity", type=float) or stats.pop()
-    prediction, confidence = machine(DataFrame(
-        [dict(zip(options, (level, health, energy, sanity)))]
-    ))
+    prediction, confidence = machine(feature_basis=DataFrame(
+        [dict(zip(options, (level, health, energy, sanity)))]))
     info = machine.info()
     return render_template(
         "model.html",
@@ -92,7 +91,7 @@ def model():
         energy=energy,
         sanity=sanity,
         prediction=prediction,
-        confidence=f"{confidence:.2%}",
+        confidence=confidence
     )
 
 
