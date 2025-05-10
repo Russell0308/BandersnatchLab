@@ -32,4 +32,4 @@ class Machine:
         return Machine(df)
 
     def info(self):
-        return (f'Base model: {self.name} \nTimestamp: {self.timestamp}')
+        return (f'Base model: {self.name}, \nTimestamp: {self.timestamp}')
